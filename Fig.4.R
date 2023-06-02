@@ -21,11 +21,18 @@ my.theme = theme(
 ###Loading data
 data <- read.csv("data.csv")
 
+#new code to capture sample size (needed to calculate the coefficient of correlation)
+samplesize <- length(data$shdi)
+
 ######Model surrounding olive groves
 glm.bo.ol<- glm.nb(bo~olive,data=data)
 
 ######Model landscape Shannon diversity
 glm.bo.shdi<- glm.nb(bo~shdi,data=data)
+
+#new code to capture ANOVA 
+anova(glm.bo.shdi)
+
 
 ###Plotting predictions
 ####Predictions model surrounding olive groves
