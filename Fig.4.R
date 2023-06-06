@@ -29,10 +29,11 @@ glm.bo.ol<- glm.nb(bo~olive,data=data)
 
 ######Model landscape Shannon diversity
 glm.bo.shdi<- glm.nb(bo~shdi,data=data)
+glm.bo.shdi$coefficients
+LMMOutput <- data.frame(glm.bo.shdi$coefficients)
 
 #new code to capture ANOVA 
-anova(glm.bo.shdi)
-
+anovaOutput <- data.frame(anova(glm.bo.shdi))
 
 ###Plotting predictions
 ####Predictions model surrounding olive groves
@@ -58,7 +59,6 @@ g.olive.com <- ggplot(data,aes(x=olive, y =data$bo))+ my.theme+
 
 g.olive.com
 
-
 ####Predictions model Shannon diversity
 Xshdi <-data.frame(shdi=seq(min(data$shdi),max(data$shdi),length=nrow(data)))
 
@@ -80,7 +80,110 @@ g.shdi.com <- ggplot(data,aes(x=shdi, y =data$bo))+ my.theme+
   geom_point() + xlab("Landscape Shannon diversity index") + ylab("B. oleae abundance")
 g.shdi.com
 
+## Save plot
+ggsave("Fig.4.png", plot = g.shdi.com, scale=0.5)
 
 ###Combining plots
 final.plot <- ggarrange(g.shdi.com,g.olive.com)
 final.plot
+
+
+####################################### 
+############### ORKG ##################
+####################################### 
+library(orkg)
+orkg <- ORKG(host="https://incubating.orkg.org")
+# Template 'LMM Planned Process('
+orkg$templates$materialize_template(template_id = "R492225")
+tp = orkg$templates$list_templates()
+keys(tp)
+
+##################################
+######### Definitions ############
+##################################
+
+Meter <- tp$qudt_unit(label="m", qudtucumcode="m", same_as="http://qudt.org/vocab/unit/M")
+BactroceraOleae <- tp$entity(label="Bactrocera Oleae", same_as="https://www.wikidata.org/wiki/Q2207329")
+Abundance <- tp$property(label="Abundance", same_as="http://purl.obolibrary.org/obo/NCIT_C70589")
+LandscapeDiversity <- tp$entity(label="Landscape Diversity", same_as="http://")
+OliveGrove <-  tp$entity(label="Olive Grove", same_as="http://purl.obolibrary.org/obo/ENVO_00000193")
+Percentage <- tp$property(label="Percentage", same_as="http://purl.obolibrary.org/obo/NCIT_C70589")
+SamplingPoint <- tp$entity(label="Sampling Point", same_as="http://")
+Radius <- tp$quantity_value(label="250 m radius", qudtnumericvalue= 500, qudtunit=Meter)
+BufferArea <- tp$entity(label="Buffer Area", same_as="http://", is_constrained_by=Radius)
+
+################################
+######## LMM Variables #########
+################################
+
+var_bactrocera_oleae_abundance <- tp$variable(
+  label="Bactrocera oleae abundance in olive groves",
+  has_object_of_interest_= BactroceraOleae,
+  has_matrix = OliveGrove,
+  has_property = Abundance
+)
+
+
+var_surrounding_olive_groves <- tp$variable(
+  label="Bactrocera oleae abundance in olive groves",
+  has_object_of_interest_= OliveGrove,
+  has_matrix = SamplingPoint,
+  has_property = Percentage
+)
+
+var_landscape_Shannon_diversity <- tp$variable(
+  label="Landscape Shannon Diversity Index",
+  has_object_of_interest_= LandscapeDiversity,
+  has_matrix = BufferArea,
+  has_property = Percentage
+)
+
+
+################################
+############ Anova  ############
+################################
+ANOVA <- tp$anova(
+  label="ANOVA with bo (bactrocera oleae abundance) as the response variable and shdi (shannon diversity index) as term.",
+  has_input_dataset= tuple(LMMOutput, "Fitted LMM with bo (bactrocera oleae abundance) as the response variable and shdi (shannon diversity index) as a fixed effect."),
+  has_output_dataset= tuple(anovaOutput, 'Df (degrees of freedom of the numerator), Df (degrees of freedom of the denominator) and the associated p-value for fixed effects.'),
+)
+
+################################
+############# LMM  #############
+################################
+lmm <- tp$linear_mixed_model(
+  label="A linear mixed model (LMM) with bactrocera oleae abundance (bo) as the response variable and shdi (shannon diversity index) as a fixed effect",
+  has_response_variable = var_bactrocera_oleae_abundance,
+  has_fixed_effect_term_i = var_landscape_Shannon_diversity,
+)
+
+################################
+######### LMM Fitting  #########
+################################
+lmmFitting <- tp$linear_mixed_model_fitting(
+  label="A linear mixed model (LMM) fitting with bactrocera oleae abundance (bo) as the response variable and shdi (shannon diversity index) as a fixed effect",
+  has_input_dataset= tuple(data, "Raw field data on bactrocera oleae abundance"),
+  has_input_model=lmm,
+  has_output_dataset= tuple(LMMOutput, 'Results of LMM fitting with bo as the response variable and shdi a as a fixed effect'),
+)
+
+################################
+######## LMM Prediction  #######
+################################
+LMMPrediction <- tp$lmm_prediction(
+  label="Prediction using the fitted LMM with bo as the response variable shdi as a fixed effect.",
+  has_input_dataset= tuple(LMMOutput, "Fitted LMM with bo as the response variable shdi as a fixed effect."),
+  has_output_dataset= tuple(PredictedValuesAphid_incidence, 'Predicted results of the LMM with bo as the response variable shdi as a fixed effect'),
+  has_output_figure = "https://raw.githubusercontent.com/manfuso/Paredes2022/main/Fig.4.png",
+)
+
+################################
+#### LMM Planned Process #######
+################################
+instance <- tp$lmm_planned_process(
+  has_implementation= "https://raw.githubusercontent.com/manfuso/Paredes2022/main/Fig4.snippet.R",
+  label="Estimated effects of landscape diversity on Bactrocera oleae abundance.", 
+  has_lmm_fitting= lmmFitting,
+  has_anova = ANOVA,
+)
+instance$serialize_to_file("article.contribution.1.json", format="json-ld")
