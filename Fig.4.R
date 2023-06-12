@@ -105,7 +105,8 @@ keys(tp)
 Meter <- tp$qudt_unit(label="m", qudtucumcode="m", same_as="http://qudt.org/vocab/unit/M")
 BactroceraOleae <- tp$entity(label="Bactrocera Oleae", same_as="https://www.wikidata.org/wiki/Q2207329")
 Abundance <- tp$property(label="Abundance", same_as="http://purl.obolibrary.org/obo/NCIT_C70589")
-LandscapeDiversity <- tp$entity(label="Landscape Diversity", same_as="http://")
+ShannonDiversityIndex <- tp$property(label="Diversity", same_as="http://purl.obolibrary.org/obo/PCO_0000062")
+Landscape <- tp$entity(label="Diversity", same_as="http://sweetontology.net/realmLandform/Landscape")
 OliveGrove <-  tp$entity(label="Olive Grove", same_as="http://purl.obolibrary.org/obo/ENVO_00000193")
 Percentage <- tp$property(label="Percentage", same_as="http://purl.obolibrary.org/obo/NCIT_C70589")
 SamplingPoint <- tp$entity(label="Sampling Point", same_as="http://")
@@ -133,9 +134,8 @@ var_surrounding_olive_groves <- tp$variable(
 
 var_landscape_Shannon_diversity <- tp$variable(
   label="Landscape Shannon Diversity Index",
-  has_object_of_interest_= LandscapeDiversity,
-  has_matrix = BufferArea,
-  has_property = Percentage
+  has_object_of_interest_= Landscape,
+  has_property = ShannonDiversityIndex
 )
 
 
@@ -180,7 +180,7 @@ LMMPrediction <- tp$lmm_prediction(
 #### LMM Planned Process #######
 ################################
 instance <- tp$lmm_planned_process(
-  has_implementation= "https://raw.githubusercontent.com/manfuso/Paredes2022/main/Fig4.snippet.R",
+  has_implementation= "https://raw.githubusercontent.com/manfuso/Paredes2022/main/Fig.4.snippet.R",
   label="Estimated effects of landscape diversity on Bactrocera oleae abundance.", 
   has_lmm_fitting= lmmFitting,
   has_anova = ANOVA,
