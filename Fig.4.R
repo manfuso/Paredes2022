@@ -182,7 +182,7 @@ LMMPrediction <- tp$lmm_prediction(
 instance <- tp$lmm_planned_process(
   has_implementation= "https://raw.githubusercontent.com/manfuso/Paredes2022/main/Fig4.snippet.R",
   label="Estimated effects of landscape diversity on Bactrocera oleae abundance.", 
-  has_lmm_fitting= lmmFitting,
+  #as_lmm_fitting= lmmFitting,
   has_anova = ANOVA,
 )
 instance$serialize_to_file("article.contribution.1.json", format="json-ld")

@@ -10,128 +10,219 @@
       "label": "ANOVA with bo (bactrocera oleae abundance) as the response variable and shdi (shannon diversity index) as term.",
       "@type": [
         "https://incubating.orkg.org/class/C39001"
-      ]
-    }
-  ],
-  "P77006": [
-    {
-      "@id": "_:n3",
-      "label": "A linear mixed model (LMM) fitting with bactrocera oleae abundance (bo) as the response variable and shdi (shannon diversity index) as a fixed effect",
-      "@type": [
-        "https://incubating.orkg.org/class/C37001"
       ],
-      "P68001": [
+      "P68002": [
         {
-          "@id": "_:n4",
-          "label": "A linear mixed model (LMM) with bactrocera oleae abundance (bo) as the response variable and shdi (shannon diversity index) as a fixed effect",
+          "label": "Df (degrees of freedom of the numerator), Df (degrees of freedom of the denominator) and the associated p-value for fixed effects.",
           "@type": [
-            "https://incubating.orkg.org/class/C37000"
+            "https://incubating.orkg.org/class/Table"
           ],
-          "P75000": [
+          "columns": [
             {
-              "@id": "_:n5",
-              "label": "Bactrocera oleae abundance in olive groves",
               "@type": [
-                "https://incubating.orkg.org/class/C37002"
+                "https://incubating.orkg.org/class/Column"
               ],
-              "P75005": [
-                {
-                  "@id": "_:n6",
-                  "label": "Olive Grove",
-                  "@type": [
-                    "https://incubating.orkg.org/class/C37003"
-                  ]
-                }
+              "titles": "Df",
+              "number": 1,
+              "@id": "_:n3"
+            },
+            {
+              "@type": [
+                "https://incubating.orkg.org/class/Column"
               ],
-              "P6004": [
-                {
-                  "@id": "_:n7",
-                  "label": "Abundance",
-                  "@type": [
-                    "https://incubating.orkg.org/class/C37004"
-                  ]
-                }
+              "titles": "Deviance",
+              "number": 2,
+              "@id": "_:n4"
+            },
+            {
+              "@type": [
+                "https://incubating.orkg.org/class/Column"
               ],
-              "P75004": [
-                {
-                  "@id": "_:n8",
-                  "label": "Bactrocera Oleae",
-                  "@type": [
-                    "https://incubating.orkg.org/class/C37003"
-                  ]
-                }
-              ]
+              "titles": "Resid..Df",
+              "number": 3,
+              "@id": "_:n5"
+            },
+            {
+              "@type": [
+                "https://incubating.orkg.org/class/Column"
+              ],
+              "titles": "Resid..Dev",
+              "number": 4,
+              "@id": "_:n6"
+            },
+            {
+              "@type": [
+                "https://incubating.orkg.org/class/Column"
+              ],
+              "titles": "Pr..Chi.",
+              "number": 5,
+              "@id": "_:n7"
             }
           ],
-          "P76000": [
+          "rows": [
             {
-              "@id": "_:n9",
-              "label": "Landscape Shannon Diversity Index",
               "@type": [
-                "https://incubating.orkg.org/class/C37002"
+                "https://incubating.orkg.org/class/Row"
               ],
-              "P75005": [
+              "titles": "NULL",
+              "number": 1,
+              "cells": [
                 {
-                  "@id": "_:n10",
-                  "label": "Buffer Area",
                   "@type": [
-                    "https://incubating.orkg.org/class/C37003"
+                    "https://incubating.orkg.org/class/Cell"
                   ],
-                  "P75006": [
-                    {
-                      "@id": "_:n11",
-                      "label": "250 m radius",
-                      "@type": [
-                        "https://incubating.orkg.org/class/C38008"
-                      ],
-                      "P45076": [
-                        {
-                          "@id": "_:n12",
-                          "label": "m",
-                          "@type": [
-                            "https://incubating.orkg.org/class/C38009"
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "P6004": [
+                  "value": "NA",
+                  "column": "_:n3"
+                },
                 {
-                  "@id": "_:n13",
-                  "label": "Percentage",
                   "@type": [
-                    "https://incubating.orkg.org/class/C37004"
-                  ]
-                }
-              ],
-              "P75004": [
+                    "https://incubating.orkg.org/class/Cell"
+                  ],
+                  "value": "NA",
+                  "column": "_:n4"
+                },
                 {
-                  "@id": "_:n14",
-                  "label": "Landscape Diversity",
                   "@type": [
-                    "https://incubating.orkg.org/class/C37003"
-                  ]
+                    "https://incubating.orkg.org/class/Cell"
+                  ],
+                  "value": "24",
+                  "column": "_:n5"
+                },
+                {
+                  "@type": [
+                    "https://incubating.orkg.org/class/Cell"
+                  ],
+                  "value": "31.8955",
+                  "column": "_:n6"
+                },
+                {
+                  "@type": [
+                    "https://incubating.orkg.org/class/Cell"
+                  ],
+                  "value": "NA",
+                  "column": "_:n7"
+                }
+              ]
+            },
+            {
+              "@type": [
+                "https://incubating.orkg.org/class/Row"
+              ],
+              "titles": "shdi",
+              "number": 2,
+              "cells": [
+                {
+                  "@type": [
+                    "https://incubating.orkg.org/class/Cell"
+                  ],
+                  "value": "1",
+                  "column": "_:n3"
+                },
+                {
+                  "@type": [
+                    "https://incubating.orkg.org/class/Cell"
+                  ],
+                  "value": "4.4433",
+                  "column": "_:n4"
+                },
+                {
+                  "@type": [
+                    "https://incubating.orkg.org/class/Cell"
+                  ],
+                  "value": "23",
+                  "column": "_:n5"
+                },
+                {
+                  "@type": [
+                    "https://incubating.orkg.org/class/Cell"
+                  ],
+                  "value": "27.4522",
+                  "column": "_:n6"
+                },
+                {
+                  "@type": [
+                    "https://incubating.orkg.org/class/Cell"
+                  ],
+                  "value": "0.035",
+                  "column": "_:n7"
                 }
               ]
             }
-          ]
+          ],
+          "@id": "_:n8"
+        }
+      ],
+      "P68000": [
+        {
+          "label": "Fitted LMM with bo (bactrocera oleae abundance) as the response variable and shdi (shannon diversity index) as a fixed effect.",
+          "@type": [
+            "https://incubating.orkg.org/class/Table"
+          ],
+          "columns": [
+            {
+              "@type": [
+                "https://incubating.orkg.org/class/Column"
+              ],
+              "titles": "glm.bo.shdi.coefficients",
+              "number": 1,
+              "@id": "_:n9"
+            }
+          ],
+          "rows": [
+            {
+              "@type": [
+                "https://incubating.orkg.org/class/Row"
+              ],
+              "titles": "(Intercept)",
+              "number": 1,
+              "cells": [
+                {
+                  "@type": [
+                    "https://incubating.orkg.org/class/Cell"
+                  ],
+                  "value": "6.866563",
+                  "column": "_:n9"
+                }
+              ]
+            },
+            {
+              "@type": [
+                "https://incubating.orkg.org/class/Row"
+              ],
+              "titles": "shdi",
+              "number": 2,
+              "cells": [
+                {
+                  "@type": [
+                    "https://incubating.orkg.org/class/Cell"
+                  ],
+                  "value": "-0.7387822",
+                  "column": "_:n9"
+                }
+              ]
+            }
+          ],
+          "@id": "_:n10"
         }
       ]
     }
   ],
+  "P72000": [
+    "https://raw.githubusercontent.com/manfuso/Paredes2022/main/Fig4.snippet.R"
+  ],
   "@context": {
     "label": "http://www.w3.org/2000/01/rdf-schema#label",
-    "P45076": "https://incubating.orkg.org/property/P45076",
-    "P6004": "https://incubating.orkg.org/property/P6004",
-    "P77006": "https://incubating.orkg.org/property/P77006",
     "P78001": "https://incubating.orkg.org/property/P78001",
-    "P68001": "https://incubating.orkg.org/property/P68001",
-    "P75000": "https://incubating.orkg.org/property/P75000",
-    "P75004": "https://incubating.orkg.org/property/P75004",
-    "P75005": "https://incubating.orkg.org/property/P75005",
-    "P75006": "https://incubating.orkg.org/property/P75006",
-    "P76000": "https://incubating.orkg.org/property/P76000"
+    "P68000": "https://incubating.orkg.org/property/P68000",
+    "P68002": "https://incubating.orkg.org/property/P68002",
+    "P72000": "https://incubating.orkg.org/property/P72000",
+    "columns": "https://incubating.orkg.org/property/CSVW_Columns",
+    "name": "https://incubating.orkg.org/property/CSVW_Name",
+    "number": "https://incubating.orkg.org/property/CSVW_Number",
+    "rows": "https://incubating.orkg.org/property/CSVW_Rows",
+    "cells": "https://incubating.orkg.org/property/CSVW_Cells",
+    "value": "https://incubating.orkg.org/property/CSVW_Value",
+    "titles": "https://incubating.orkg.org/property/CSVW_Titles",
+    "column": "https://incubating.orkg.org/property/CSVW_Column"
   }
 }
