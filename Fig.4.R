@@ -173,7 +173,6 @@ lmmFitting <- tp$linear_mixed_model_fitting(
 LMMPrediction <- tp$lmm_prediction(
   label="Prediction using the fitted LMM with bo as the response variable shdi as a fixed effect.",
   has_input_dataset= tuple(LMMOutput, "Fitted LMM with bo as the response variable shdi as a fixed effect."),
-  has_output_dataset= tuple(PredictedValuesAphid_incidence, 'Predicted results of the LMM with bo as the response variable shdi as a fixed effect'),
   has_output_figure = "https://raw.githubusercontent.com/manfuso/Paredes2022/main/Fig.4.png",
 )
 
