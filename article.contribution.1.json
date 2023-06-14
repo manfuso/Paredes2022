@@ -216,7 +216,7 @@
       ],
       "P68002": [
         {
-          "label": "Results of LMM fitting with bo as the response variable and shdi a as a fixed effect",
+          "label": "Results of LMM fitting with bo as the response variable and shdi as a fixed effect",
           "@type": [
             "https://incubating.orkg.org/class/Table"
           ],
@@ -329,7 +329,7 @@
               "P6004": [
                 {
                   "@id": "_:n20",
-                  "label": "Diversity",
+                  "label": "Shannon diversity index",
                   "@type": [
                     "https://incubating.orkg.org/class/C37004"
                   ],
@@ -341,7 +341,7 @@
               "P75004": [
                 {
                   "@id": "_:n21",
-                  "label": "Diversity",
+                  "label": "Landscape",
                   "@type": [
                     "https://incubating.orkg.org/class/C37003"
                   ],

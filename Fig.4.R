@@ -105,8 +105,8 @@ keys(tp)
 Meter <- tp$qudt_unit(label="m", qudtucumcode="m", same_as="http://qudt.org/vocab/unit/M")
 BactroceraOleae <- tp$entity(label="Bactrocera Oleae", same_as="https://www.wikidata.org/wiki/Q2207329")
 Abundance <- tp$property(label="Abundance", same_as="http://purl.obolibrary.org/obo/NCIT_C70589")
-ShannonDiversityIndex <- tp$property(label="Diversity", same_as="http://purl.obolibrary.org/obo/PCO_0000062")
-Landscape <- tp$entity(label="Diversity", same_as="http://sweetontology.net/realmLandform/Landscape")
+ShannonDiversityIndex <- tp$property(label="Shannon diversity index", same_as="http://purl.obolibrary.org/obo/PCO_0000062")
+Landscape <- tp$entity(label="Landscape", same_as="http://sweetontology.net/realmLandform/Landscape")
 OliveGrove <-  tp$entity(label="Olive Grove", same_as="http://purl.obolibrary.org/obo/ENVO_00000193")
 Percentage <- tp$property(label="Percentage", same_as="http://purl.obolibrary.org/obo/NCIT_C70589")
 SamplingPoint <- tp$entity(label="Sampling Point", same_as="http://")
@@ -164,7 +164,7 @@ lmmFitting <- tp$linear_mixed_model_fitting(
   label="A linear mixed model (LMM) fitting with bactrocera oleae abundance (bo) as the response variable and shdi (shannon diversity index) as a fixed effect",
   has_input_dataset= tuple(data, "Raw field data on bactrocera oleae abundance"),
   has_input_model=lmm,
-  has_output_dataset= tuple(LMMOutput, 'Results of LMM fitting with bo as the response variable and shdi a as a fixed effect'),
+  has_output_dataset= tuple(LMMOutput, 'Results of LMM fitting with bo as the response variable and shdi as a fixed effect'),
 )
 
 ################################
